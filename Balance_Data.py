@@ -343,60 +343,61 @@ def Unir_Listas__K_Fold_Cross(B_D_lista):
     return Union
 
 
-archivo = pd.read_csv(".//balance-scale.csv",header=0)
+if __name__ == '__main__':
+    archivo = pd.read_csv(".//balance-scale.csv",header=0)
 
-matriz = np.asarray(archivo)
+    matriz = np.asarray(archivo)
 
-C_F = Hold_Out(70, matriz)[0]
-C_P = Hold_Out(70, matriz)[1]
+    C_F = Hold_Out(70, matriz)[0]
+    C_P = Hold_Out(70, matriz)[1]
 
-ms = Fase_Aprendizaje(C_F)
+    ms = Fase_Aprendizaje(C_F)
 
-print("\nClasificador Euclidiano")
-print ( "Rendimiento Hold Out  :" ,round(Rendimiento_Hold_Out(Fase_Clasificacion(C_P,ms),C_P),2),"%")
-print ("   ")
+    print("\nClasificador Euclidiano")
+    print ( "Rendimiento Hold Out  :" ,round(Rendimiento_Hold_Out(Fase_Clasificacion(C_P,ms),C_P),2),"%")
+    print ("   ")
 
-print("Rendimiento K Fold Cross :" ,Rendimiento(Recorrer_K_Fold_Cross_Clasificador( K_Fold_Cross(2, matriz))), "%")
-print ("   ")
+    print("Rendimiento K Fold Cross :" ,Rendimiento(Recorrer_K_Fold_Cross_Clasificador( K_Fold_Cross(2, matriz))), "%")
+    print ("   ")
 
-print("Rendimiento leave One Out :" ,round( Rendimiento(Recorrer_Leave_One_Out_Clasificador(matriz)),2),"%")
+    print("Rendimiento leave One Out :" ,round( Rendimiento(Recorrer_Leave_One_Out_Clasificador(matriz)),2),"%")
 
-k=3
-print("\nClasificador Knn", "con K: ",k)
-print ( "Rendimiento Hold Out  :" ,round(Rendimiento_Hold_Out(Cont_Aciertos(Hold_Out_Clasificador_Knn(C_P,C_F,k),C_P),C_P),2),"%")
-print ("   ")
-print("Rendimiento K Fold Cross :" ,round(Rendimiento(Cont_Aciertos(Recorrer_K_Fold_Cross_Clasificador_Knn( K_Fold_Cross(5, matriz),k),Unir_Listas__K_Fold_Cross(K_Fold_Cross(5, matriz)))),2),"%")
-print ("   ")
-print("Rendimiento leave One Out :" ,round( Rendimiento(Cont_Aciertos(Recorrer_Leave_One_Out_Knn_Clasificador(matriz,k),matriz)),2),"%")
+    k=3
+    print("\nClasificador Knn", "con K: ",k)
+    print ( "Rendimiento Hold Out  :" ,round(Rendimiento_Hold_Out(Cont_Aciertos(Hold_Out_Clasificador_Knn(C_P,C_F,k),C_P),C_P),2),"%")
+    print ("   ")
+    print("Rendimiento K Fold Cross :" ,round(Rendimiento(Cont_Aciertos(Recorrer_K_Fold_Cross_Clasificador_Knn( K_Fold_Cross(5, matriz),k),Unir_Listas__K_Fold_Cross(K_Fold_Cross(5, matriz)))),2),"%")
+    print ("   ")
+    print("Rendimiento leave One Out :" ,round( Rendimiento(Cont_Aciertos(Recorrer_Leave_One_Out_Knn_Clasificador(matriz,k),matriz)),2),"%")
 
-k=5
-print("\nClasificador Knn", "con K: ",k)
-print ( "Rendimiento Hold Out  :" ,round(Rendimiento_Hold_Out(Cont_Aciertos(Hold_Out_Clasificador_Knn(C_P,C_F,k),C_P),C_P),2),"%")
-print ("   ")
-print("Rendimiento K Fold Cross :" ,round(Rendimiento(Cont_Aciertos(Recorrer_K_Fold_Cross_Clasificador_Knn( K_Fold_Cross(5, matriz),k),Unir_Listas__K_Fold_Cross(K_Fold_Cross(5, matriz)))),2),"%")
-print ("   ")
-print("Rendimiento leave One Out :" ,round( Rendimiento(Cont_Aciertos(Recorrer_Leave_One_Out_Knn_Clasificador(matriz,k),matriz)),2),"%")
+    k=5
+    print("\nClasificador Knn", "con K: ",k)
+    print ( "Rendimiento Hold Out  :" ,round(Rendimiento_Hold_Out(Cont_Aciertos(Hold_Out_Clasificador_Knn(C_P,C_F,k),C_P),C_P),2),"%")
+    print ("   ")
+    print("Rendimiento K Fold Cross :" ,round(Rendimiento(Cont_Aciertos(Recorrer_K_Fold_Cross_Clasificador_Knn( K_Fold_Cross(5, matriz),k),Unir_Listas__K_Fold_Cross(K_Fold_Cross(5, matriz)))),2),"%")
+    print ("   ")
+    print("Rendimiento leave One Out :" ,round( Rendimiento(Cont_Aciertos(Recorrer_Leave_One_Out_Knn_Clasificador(matriz,k),matriz)),2),"%")
 
-k=7
-print("\nClasificador Knn", "con K: ",k)
-print ( "Rendimiento Hold Out  :" ,round(Rendimiento_Hold_Out(Cont_Aciertos(Hold_Out_Clasificador_Knn(C_P,C_F,k),C_P),C_P),2),"%")
-print ("   ")
-print("Rendimiento K Fold Cross :" ,round(Rendimiento(Cont_Aciertos(Recorrer_K_Fold_Cross_Clasificador_Knn( K_Fold_Cross(5, matriz),k),Unir_Listas__K_Fold_Cross(K_Fold_Cross(5, matriz)))),2),"%")
-print ("   ")
-print("Rendimiento leave One Out :" ,round( Rendimiento(Cont_Aciertos(Recorrer_Leave_One_Out_Knn_Clasificador(matriz,k),matriz)),2),"%")
+    k=7
+    print("\nClasificador Knn", "con K: ",k)
+    print ( "Rendimiento Hold Out  :" ,round(Rendimiento_Hold_Out(Cont_Aciertos(Hold_Out_Clasificador_Knn(C_P,C_F,k),C_P),C_P),2),"%")
+    print ("   ")
+    print("Rendimiento K Fold Cross :" ,round(Rendimiento(Cont_Aciertos(Recorrer_K_Fold_Cross_Clasificador_Knn( K_Fold_Cross(5, matriz),k),Unir_Listas__K_Fold_Cross(K_Fold_Cross(5, matriz)))),2),"%")
+    print ("   ")
+    print("Rendimiento leave One Out :" ,round( Rendimiento(Cont_Aciertos(Recorrer_Leave_One_Out_Knn_Clasificador(matriz,k),matriz)),2),"%")
 
-k=9
-print("\nClasificador Knn", "con K: ",k)
-print ( "Rendimiento Hold Out  :" ,round(Rendimiento_Hold_Out(Cont_Aciertos(Hold_Out_Clasificador_Knn(C_P,C_F,k),C_P),C_P),2),"%")
-print ("   ")
-print("Rendimiento K Fold Cross :" ,round(Rendimiento(Cont_Aciertos(Recorrer_K_Fold_Cross_Clasificador_Knn( K_Fold_Cross(5, matriz),k),Unir_Listas__K_Fold_Cross(K_Fold_Cross(5, matriz)))),2),"%")
-print ("   ")
-print("Rendimiento leave One Out :" ,round( Rendimiento(Cont_Aciertos(Recorrer_Leave_One_Out_Knn_Clasificador(matriz,k),matriz)),2),"%")
+    k=9
+    print("\nClasificador Knn", "con K: ",k)
+    print ( "Rendimiento Hold Out  :" ,round(Rendimiento_Hold_Out(Cont_Aciertos(Hold_Out_Clasificador_Knn(C_P,C_F,k),C_P),C_P),2),"%")
+    print ("   ")
+    print("Rendimiento K Fold Cross :" ,round(Rendimiento(Cont_Aciertos(Recorrer_K_Fold_Cross_Clasificador_Knn( K_Fold_Cross(5, matriz),k),Unir_Listas__K_Fold_Cross(K_Fold_Cross(5, matriz)))),2),"%")
+    print ("   ")
+    print("Rendimiento leave One Out :" ,round( Rendimiento(Cont_Aciertos(Recorrer_Leave_One_Out_Knn_Clasificador(matriz,k),matriz)),2),"%")
 
-k=11
-print("\nClasificador Knn", "con K: ",k)
-print ( "Rendimiento Hold Out  :" ,round(Rendimiento_Hold_Out(Cont_Aciertos(Hold_Out_Clasificador_Knn(C_P,C_F,k),C_P),C_P),2),"%")
-print ("   ")
-print("Rendimiento K Fold Cross :" ,round(Rendimiento(Cont_Aciertos(Recorrer_K_Fold_Cross_Clasificador_Knn( K_Fold_Cross(5, matriz),k),Unir_Listas__K_Fold_Cross(K_Fold_Cross(5, matriz)))),2),"%")
-print ("   ")
-print("Rendimiento leave One Out :" ,round( Rendimiento(Cont_Aciertos(Recorrer_Leave_One_Out_Knn_Clasificador(matriz,k),matriz)),2),"%")
+    k=11
+    print("\nClasificador Knn", "con K: ",k)
+    print ( "Rendimiento Hold Out  :" ,round(Rendimiento_Hold_Out(Cont_Aciertos(Hold_Out_Clasificador_Knn(C_P,C_F,k),C_P),C_P),2),"%")
+    print ("   ")
+    print("Rendimiento K Fold Cross :" ,round(Rendimiento(Cont_Aciertos(Recorrer_K_Fold_Cross_Clasificador_Knn( K_Fold_Cross(5, matriz),k),Unir_Listas__K_Fold_Cross(K_Fold_Cross(5, matriz)))),2),"%")
+    print ("   ")
+    print("Rendimiento leave One Out :" ,round( Rendimiento(Cont_Aciertos(Recorrer_Leave_One_Out_Knn_Clasificador(matriz,k),matriz)),2),"%")
